@@ -15,6 +15,9 @@ const User = db.define('User', {
     password: {
         type: DataTypes.STRING
     },
+    role: {
+        type: DataTypes.STRING
+    },
     firstname: {
         type: DataTypes.STRING
     },
