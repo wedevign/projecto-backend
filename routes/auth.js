@@ -43,9 +43,13 @@ router.post('/login', async (req, res) => {
 
         var authKey = await createAuth(16);
         if(password == fetchedPassword) {
-            const token = Token.build({userId: userId, authToken: authKey, expirationDateTime: (Date.now() + 3600000)});
+            var expiration = (Date.now() + 3600000);
+            const token = Token.build({userId: userId, authToken: authKey, expirationDateTime: expiration });
             token.save();
-            res.json({authtoken: authKey});
+            res.json({
+                authtoken: authKey,
+                expirationDateTime: expiration
+            });
         } else {
             res.json({error: "The credentials were incorrect"});
         }
