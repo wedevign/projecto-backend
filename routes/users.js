@@ -12,4 +12,17 @@ router.get('/all', async (req, res) => {
     res.send(users);
 });
 
+router.get('/userbyemail', async (req, res) => {
+    const users = await User.findAll({
+        attributes:{
+            where: {
+                email: req.body.email
+            },
+            exclude: ['password']
+        },
+        raw: true
+    });
+    res.send(users[0]);
+});
+
 module.exports = router;
