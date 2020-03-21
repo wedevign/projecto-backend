@@ -10,7 +10,8 @@ const User = db.define('User', {
         primaryKey: true
     },
     email: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
     password: {
         type: DataTypes.STRING
@@ -23,6 +24,10 @@ const User = db.define('User', {
     },
     lastname: {
         type: DataTypes.STRING
+    },
+    teamId: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     },
     activated: {
         type: DataTypes.TINYINT,

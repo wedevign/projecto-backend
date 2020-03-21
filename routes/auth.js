@@ -4,8 +4,6 @@ const CryptoJS = require('crypto-js');
 const User = require("../models/User");
 const Token = require("../models/Token");
 
-const config = require('../config/config');
-
 router.post('/register',async (req, res) => {
     // First, we check if email is already registered in the database.
     if(await accountExists(req.body.email)) {

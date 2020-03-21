@@ -3,33 +3,25 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 const db = require('../config/database');
 
-const Project = db.define('Project', {
+const Team = db.define('Team', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
     name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
     description: {
-        type: DataTypes.STRING
-    },
-    status: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT,
+        allowNull: true,
     },
     ownerId: {
         type: DataTypes.INTEGER
-    },
-    teamId: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-    },
-    members: {
-        type: DataTypes.ARRAY
     }
 });
 
-User.sync();
+Team.sync();
 
-module.exports = Project;
+module.exports = Team;
