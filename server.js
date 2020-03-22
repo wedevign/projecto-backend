@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const Sequelize = require('sequelize');
 
 const config = require("./config/config");
@@ -20,6 +21,7 @@ const teamsRoute = require("./routes/teams");
 
 // Middlewares
 app.use(express.json());
+app.use(cors());
 
 // Route middlewares
 app.use("/api/user", authRoute);
